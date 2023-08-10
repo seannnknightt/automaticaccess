@@ -1,0 +1,849 @@
+
+<!doctype html>
+    <html lang="en-GB">
+
+    <head><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",(e=>{this.persisted=e.persisted})),window.addEventListener("DOMContentLoaded",(()=>{this._preconnect3rdParties()})),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){document.hidden?e._triggerListener():(this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventHandler,{passive:!0}))),window.addEventListener("touchstart",e.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",e.touchStartHandler),document.addEventListener("visibilitychange",e.userEventHandler))}_removeUserInteractionListener(){this.triggerEvents.forEach((e=>window.removeEventListener(e,this.userEventHandler,{passive:!0}))),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(e){"HTML"!==e.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),e.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"onclick","rocket-onclick"))}_onTouchMove(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick")}_onTouchEnd(e){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(e){e.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(e.target,"rocket-onclick","onclick"),this.interceptedClicks.push(e),e.preventDefault(),e.stopPropagation(),e.stopImmediatePropagation()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach((e=>{e.target.dispatchEvent(new MouseEvent("click",{view:e.view,bubbles:!0,cancelable:!0}))}))}_renameDOMAttribute(e,t,n){e.hasAttribute&&e.hasAttribute(t)&&(event.target.setAttribute(n,event.target.getAttribute(t)),event.target.removeAttribute(t))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let e=[];document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((t=>{if(t.hasAttribute("src")){const n=new URL(t.src).origin;n!==location.origin&&e.push({src:n,crossOrigin:t.crossOrigin||"module"===t.getAttribute("data-rocket-type")})}})),e=[...new Map(e.map((e=>[JSON.stringify(e),e]))).values()],this._batchInjectResourceHints(e,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._triggerWindowLoad()}catch(e){}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._replayClicks()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._littleBreath(),new Promise((t=>{const n=document.createElement("script");[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type"),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t());try{e.parentNode.replaceChild(n,e)}catch(e){t()}}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(e,t){var n=document.createDocumentFragment();e.forEach((e=>{if(e.src){const i=document.createElement("link");i.href=e.src,i.rel=t,"preconnect"!==t&&(i.as="script"),e.getAttribute&&"module"===e.getAttribute("data-rocket-type")&&(i.crossOrigin=!0),e.crossOrigin&&(i.crossOrigin=e.crossOrigin),n.appendChild(i)}})),document.head.appendChild(n)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(i){e["rocket"+t]=n=i}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),await this._littleBreath();const e=new Event("rocket-pageshow");e.persisted=this.persisted,window.dispatchEvent(e),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,i=document.createRange(),r=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const s=document.createDocumentFragment();i.setStart(s,0),s.appendChild(i.createContextualFragment(t)),r.insertBefore(s,o)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise((e=>setTimeout(e))):new Promise((e=>requestAnimationFrame(e)))}}</script>
+	<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "c9ox2hqewh");
+</script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="profile" href="https://gmpg.org/xfn/11">
+        <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+
+	<!-- This site is optimized with the Yoast SEO plugin v19.12 - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>The Pointer Sisters: Automatic | Blog | Automatic Access</title><link rel="stylesheet" href="https://www.automaticaccess.co.uk/wp-content/cache/min/1/7a1886c8f28ea936935af2c642d86109.css" media="all" data-minify="1" />
+	<meta name="description" content="American R&amp;B group the Pointer Sisters is one of the most enduring family bands in the world - with a career spanning almost five decades to date." />
+	<link rel="canonical" href="https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/" />
+	<meta property="og:locale" content="en_GB" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="The Pointer Sisters: Automatic" />
+	<meta property="og:description" content="One thing that will always be automatic is our selection of doors!" />
+	<meta property="og:url" content="https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/" />
+	<meta property="og:site_name" content="Automatic Access Limited" />
+	<meta property="article:published_time" content="2018-05-30T14:38:15+00:00" />
+	<meta property="article:modified_time" content="2018-12-18T14:16:59+00:00" />
+	<meta name="author" content="Jo Foster" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:image" content="https://www.automaticaccess.co.uk/wp-content/uploads/2018/09/logo.jpg" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Jo Foster" />
+	<meta name="twitter:label2" content="Estimated reading time" />
+	<meta name="twitter:data2" content="4 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/","url":"https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/","name":"The Pointer Sisters: Automatic | Blog | Automatic Access","isPartOf":{"@id":"https://www.automaticaccess.co.uk/#website"},"primaryImageOfPage":{"@id":"https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/#primaryimage"},"image":{"@id":"https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/#primaryimage"},"thumbnailUrl":"https://www.automaticaccess.co.uk/wp-content/uploads/2018/09/logo.jpg","datePublished":"2018-05-30T14:38:15+00:00","dateModified":"2018-12-18T14:16:59+00:00","author":{"@id":"https://www.automaticaccess.co.uk/#/schema/person/2467ef00f999666d7fd3f303dc22c1b0"},"description":"American R&B group the Pointer Sisters is one of the most enduring family bands in the world - with a career spanning almost five decades to date.","breadcrumb":{"@id":"https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/#breadcrumb"},"inLanguage":"en-GB","potentialAction":[{"@type":"ReadAction","target":["https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/"]}]},{"@type":"ImageObject","inLanguage":"en-GB","@id":"https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/#primaryimage","url":"https://www.automaticaccess.co.uk/wp-content/uploads/2018/09/logo.jpg","contentUrl":"https://www.automaticaccess.co.uk/wp-content/uploads/2018/09/logo.jpg","width":231,"height":221,"caption":"Automatic Access"},{"@type":"BreadcrumbList","@id":"https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.automaticaccess.co.uk/"},{"@type":"ListItem","position":2,"name":"The Pointer Sisters: Automatic"}]},{"@type":"WebSite","@id":"https://www.automaticaccess.co.uk/#website","url":"https://www.automaticaccess.co.uk/","name":"Automatic Access Limited","description":"","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://www.automaticaccess.co.uk/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-GB"},{"@type":"Person","@id":"https://www.automaticaccess.co.uk/#/schema/person/2467ef00f999666d7fd3f303dc22c1b0","name":"Jo Foster","image":{"@type":"ImageObject","inLanguage":"en-GB","@id":"https://www.automaticaccess.co.uk/#/schema/person/image/","url":"https://secure.gravatar.com/avatar/23bf2910cb4a0f3106d66a35b65e17d6?s=96&d=mm&r=g","contentUrl":"https://secure.gravatar.com/avatar/23bf2910cb4a0f3106d66a35b65e17d6?s=96&d=mm&r=g","caption":"Jo Foster"}}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//www.google.com' />
+
+<link rel="alternate" type="application/rss+xml" title="Automatic Access Limited &raquo; Feed" href="https://www.automaticaccess.co.uk/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Automatic Access Limited &raquo; Comments Feed" href="https://www.automaticaccess.co.uk/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Automatic Access Limited &raquo; The Pointer Sisters: Automatic Comments Feed" href="https://www.automaticaccess.co.uk/blog/the-pointer-sisters-automatic/feed/" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/jquery.min.js' id='jquery-core-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/jquery-migrate.min.js' id='jquery-migrate-js'></script>
+<script type='text/javascript' id='cookie-law-info-js-extra'>
+/* <![CDATA[ */
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[],"non_necessary_cookies":[],"ccpaEnabled":"","ccpaRegionBased":"","ccpaBarEnabled":"","strictlyEnabled":["necessary","obligatoire"],"ccpaType":"gdpr","js_blocking":"1","custom_integration":"","triggerDomRefresh":"","secure_cookies":""};
+var cli_cookiebar_settings = {"animate_speed_hide":"500","animate_speed_show":"500","background":"#0f0f0f","border":"#b1a6a6c2","border_on":"","button_1_button_colour":"#007fab","button_1_button_hover":"#006689","button_1_link_colour":"#fff","button_1_as_button":"1","button_1_new_win":"","button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#ffffff","button_2_as_button":"","button_2_hidebar":"","button_3_button_colour":"#3566bb","button_3_button_hover":"#2a5296","button_3_link_colour":"#fff","button_3_as_button":"1","button_3_new_win":"","button_4_button_colour":"#000","button_4_button_hover":"#000000","button_4_link_colour":"#333333","button_4_as_button":"","button_7_button_colour":"#61a229","button_7_button_hover":"#4e8221","button_7_link_colour":"#fff","button_7_as_button":"1","button_7_new_win":"","font_family":"inherit","header_fix":"","notify_animate_hide":"1","notify_animate_show":"","notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":"","scroll_close_reload":"","accept_close_reload":"","reject_close_reload":"","showagain_tab":"","showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#ffffff","show_once_yn":"","show_once":"10000","logging_on":"","as_popup":"","popup_overlay":"1","bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"};
+var log_object = {"ajax_url":"https:\/\/www.automaticaccess.co.uk\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/cookie-law-info/legacy/public/js/cookie-law-info-public.js' id='cookie-law-info-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/js/bootstrap.min.js' id='automaticaccess-bootstrap-js-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/js/jquery.flexslider.js' id='automaticaccess-flexslider-js-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/js/owl.carousel.js' id='automaticaccess-owl-carousel-js-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/js/map.js' id='automaticaccess-map-js-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/js/menu.js' id='automaticaccess-menu-js-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/js/custom.js' id='automaticaccess-custom-js-js'></script>
+<link rel="https://api.w.org/" href="https://www.automaticaccess.co.uk/wp-json/" /><link rel="alternate" type="application/json" href="https://www.automaticaccess.co.uk/wp-json/wp/v2/posts/1022" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.automaticaccess.co.uk/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.automaticaccess.co.uk/wp-includes/wlwmanifest.xml" /> 
+
+<link rel='shortlink' href='https://www.automaticaccess.co.uk/?p=1022' />
+<link rel="alternate" type="application/json+oembed" href="https://www.automaticaccess.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.automaticaccess.co.uk%2Fblog%2Fthe-pointer-sisters-automatic%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://www.automaticaccess.co.uk/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.automaticaccess.co.uk%2Fblog%2Fthe-pointer-sisters-automatic%2F&#038;format=xml" />
+
+            <style type="text/css">
+                .progress-wrap {
+                    bottom: 30px;
+                    height: 46px;
+                    width: 46px;
+                    border-radius: 46px;
+                    background-color: #ffffff;
+                    box-shadow: inset 0 0 0 2px #cccccc;
+                }
+
+                .progress-wrap.btn-left-side {
+                    left: 40px;
+                }
+
+                .progress-wrap.btn-right-side {
+                    right: 40px;
+                }
+
+                .progress-wrap::after {
+                    width: 46px;
+                    height: 46px;
+                    color: #44c5f2;
+                    font-size: 24px;
+                    content: '\e900';
+                    line-height: 46px;
+                }
+
+                .progress-wrap:hover::after {
+                    color: #44c5f2;
+                }
+
+                .progress-wrap svg.progress-circle path {
+                    stroke: #44c5f2;
+                    stroke-width: 2px;
+                }
+
+                
+                
+                
+            </style>
+
+			<link rel="pingback" href="https://www.automaticaccess.co.uk/xmlrpc.php"><style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style><link rel="icon" href="https://www.automaticaccess.co.uk/wp-content/uploads/2018/09/cropped-fav-150x150.jpg" sizes="32x32" />
+<link rel="icon" href="https://www.automaticaccess.co.uk/wp-content/uploads/2018/09/cropped-fav-300x300.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.automaticaccess.co.uk/wp-content/uploads/2018/09/cropped-fav-300x300.jpg" />
+<meta name="msapplication-TileImage" content="https://www.automaticaccess.co.uk/wp-content/uploads/2018/09/cropped-fav-300x300.jpg" />
+		<style type="text/css" id="wp-custom-css">
+			 @media only screen and (max-width: 768px) {
+  .site-header .header-social-icons .social-icons li:last-child {
+    display:none;
+  }
+}
+.homepage-products-section .product-image{ display:flex;}
+.homepage-products-section .product-image a{display:flex; width:100%;}
+.homepage-products-section .product-image a img{object-fit:cover;}
+
+.blog-listing-section .entry-content .entry-meta .posted-author {
+	display:none;
+}
+span .wpcf7-not-valid {
+    border: 1px solid #ff0000 !important;
+}
+
+img.foot-logos {
+	height:auto;
+	width:auto;
+	aspect-ratio:auto;
+	max-height:88px;
+}
+
+ul.foot-brands {
+	display:inline-flex;
+}
+
+@media only screen and (max-width: 480px) {
+/* FOOTER LOGO IMAGES	 */
+	ul.foot-brands {
+		display: inline-block;
+	}
+	.footer-brand-icons li {
+		display: inline-block;
+		max-width: 125px;
+	}
+}		</style>
+		<noscript><style id="rocket-lazyload-nojs-css">.rll-youtube-player, [data-lazy-src]{display:none !important;}</style></noscript>		<!-- Google Tag Manager -->
+<script type="rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KLG54QZ');</script>
+<!-- End Google Tag Manager -->
+
+<meta name="facebook-domain-verification" content="wlmimlazve5jhkt9l7ksx2zbvtxey6" />
+
+		<!-- Facebook Pixel Code -->
+<script type="rocketlazyloadscript">
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '220054655208424');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=220054655208424&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Facebook Pixel Code -->
+<style>
+button.btnClose {
+    position: absolute;
+    top: 150px;
+    display: block;
+    right: 5px;
+		color: #fff;
+    background-color: #000;
+    border: 1px solid #000;
+    font-weight: 500;
+}
+@media only screen and (max-width:1023px) 
+{
+	button.btnClose 
+	{
+		top: 60px;
+		    z-index: 99999;
+    }
+}
+  
+ @media (min-width: 1265px) and  (max-width: 2200px) 
+	{
+		div#header-message {
+	    margin-top: 35px;
+		}
+        button.btnClose 
+	{
+		z-index: 99999;
+    } 
+}  
+   </style>  
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+jQuery(document).ready(function(){
+ jQuery(".btnClose").click(function(){
+ jQuery("#header-message").slideUp(600);
+  });
+});
+</script>
+</head>
+
+    <body data-rsssl=1 class="post-template-default single single-post postid-1022 single-format-standard">
+		<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KLG54QZ"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+				
+		<div id="page" class="site">
+			
+            <header id="masthead" class="site-header">
+				
+                <a title="Automatic Access Limited" class="logo" href="https://www.automaticaccess.co.uk/">
+                    <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="Logo" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/images/logo.jpg"><noscript><img src="https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/images/logo.jpg" alt="Logo"></noscript>
+                </a>
+                <div class="header-right-block">
+                    <div class="header-top">
+                        <div class="header-top-left">
+                            <div class="header-social-icons">
+                                <div class="block-content">			<div class="textwidget"><div class="social-icons">
+<ul>
+<li><a href="https://www.facebook.com/automaticaccess" target="_blank" rel="noopener"><img width="35" height="35" class="alignnone size-full wp-image-150" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2035%2035'%3E%3C/svg%3E" alt="Facebook" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/uploads/2018/08/facebook-icon.png" /><noscript><img width="35" height="35" class="alignnone size-full wp-image-150" src="https://www.automaticaccess.co.uk/wp-content/uploads/2018/08/facebook-icon.png" alt="Facebook" /></noscript></a></li>
+</ul>
+</div>
+</div>
+		</div>                            </div>
+                            <div class="header-contact-details">
+                                <div class="block-content"><h4 class="block-title">Contact Us</h4>			<div class="textwidget"><div class="contact-details">
+<ul>
+<li class="phone"><a href="tel:0116 2695050">0116 2695050</a></li>
+<li class="email"><a href="mailto:info@automaticaccess.co.uk">info@automaticaccess.co.uk</a></li>
+</ul>
+</div>
+</div>
+		</div>                            </div>
+                        </div>
+                        <div class="header-top-right">
+                            <a class="btn request-btn" href="https://www.automaticaccess.co.uk/request-a-quote/" title="Request a quote">Request a quote</a>
+                        </div>
+                    </div>
+                    <div class="header-bottom">
+                        <div class="header-nav">
+                            <nav id="site-navigation" class="main-navigation">
+                                <div class="menu-new-main-menu-container"><ul id="primary-menu" class="menu"><li id="menu-item-2654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2654"><a href="https://www.automaticaccess.co.uk/about-us/">About Us</a>
+<ul class="sub-menu">
+	<li id="menu-item-3609" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3609"><a href="https://www.automaticaccess.co.uk/about-us/">Who are we?</a></li>
+	<li id="menu-item-3074" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3074"><a href="https://www.automaticaccess.co.uk/automatic-doors/fire-safety/">Fire Safety</a></li>
+	<li id="menu-item-2658" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2658"><a href="https://www.automaticaccess.co.uk/occupier-safety-checks/">Occupier Safety Checks for Automatic Doors</a></li>
+	<li id="menu-item-2662" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2662"><a href="https://www.automaticaccess.co.uk/links/">Resources</a></li>
+</ul>
+</li>
+<li id="menu-item-2694" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2694"><a href="#">Products</a>
+<ul class="sub-menu">
+	<li id="menu-item-2666" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2666"><a href="https://www.automaticaccess.co.uk/automatic-doors/">Automatic Doors</a>
+	<ul class="sub-menu">
+		<li id="menu-item-2678" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2678"><a href="https://www.automaticaccess.co.uk/automatic-balanced-doors/">Automatic Balanced Doors</a></li>
+		<li id="menu-item-2680" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2680"><a href="https://www.automaticaccess.co.uk/automatic-bi-folding-doors/">Automatic Bi-Folding Doors</a></li>
+		<li id="menu-item-2668" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2668"><a href="https://www.automaticaccess.co.uk/automatic-revolving-doors/">Automatic Revolving Doors</a></li>
+		<li id="menu-item-2670" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2670"><a href="https://www.automaticaccess.co.uk/automatic-sliding-doors/">Automatic Sliding Doors</a></li>
+		<li id="menu-item-2672" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2672"><a href="https://www.automaticaccess.co.uk/automatic-swinging-doors/">Automatic Swing Doors</a></li>
+		<li id="menu-item-2674" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2674"><a href="https://www.automaticaccess.co.uk/automatic-telescopic-doors/">Automatic Telescopic Doors</a></li>
+		<li id="menu-item-2676" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2676"><a href="https://www.automaticaccess.co.uk/stainless-steel-automatic-doors/">Stainless Steel Finish Automated Entrances</a></li>
+	</ul>
+</li>
+	<li id="menu-item-2698" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2698"><a href="https://www.automaticaccess.co.uk/queue-management-system/">Covid-19 Queue Management System</a></li>
+	<li id="menu-item-2880" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2880"><a href="https://www.automaticaccess.co.uk/dda-disabled-door-systems/">DDA Disabled Door Systems</a></li>
+	<li id="menu-item-2686" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2686"><a href="https://www.automaticaccess.co.uk/automatic-door-openers/">Door Operators</a>
+	<ul class="sub-menu">
+		<li id="menu-item-2682" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2682"><a href="https://www.automaticaccess.co.uk/automatic-door-activators/">Activators &#038; Safety Devices</a></li>
+		<li id="menu-item-2684" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2684"><a href="https://www.automaticaccess.co.uk/automatic-door-actuators/">Actuators</a></li>
+		<li id="menu-item-2688" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2688"><a href="https://www.automaticaccess.co.uk/pneumatic-door-openers/">Pneumatic Operators</a></li>
+	</ul>
+</li>
+	<li id="menu-item-2690" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2690"><a href="https://www.automaticaccess.co.uk/shop-fronts/">Shop Fronts</a></li>
+	<li id="menu-item-3497" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3497"><a href="https://www.automaticaccess.co.uk/uninterrupted-power-supply/">Uninterrupted Power Supply</a></li>
+</ul>
+</li>
+<li id="menu-item-2696" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2696"><a href="https://www.automaticaccess.co.uk/automatic-door-repairs/">Maintenance &#038; Repairs</a></li>
+<li id="menu-item-3569" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3569"><a href="https://www.automaticaccess.co.uk/automatic-doors-home-domestic/">Home &#038; Domestic</a></li>
+<li id="menu-item-2710" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2710"><a href="https://www.automaticaccess.co.uk/sectors/">Sectors</a>
+<ul class="sub-menu">
+	<li id="menu-item-2716" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2716"><a href="https://www.automaticaccess.co.uk/automatic-doors-for-care-homes/">Care Homes</a></li>
+	<li id="menu-item-2706" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2706"><a href="https://www.automaticaccess.co.uk/commercial-properties/">Commercial Properties</a></li>
+	<li id="menu-item-2712" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2712"><a href="https://www.automaticaccess.co.uk/education/">Education</a></li>
+	<li id="menu-item-2704" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2704"><a href="https://www.automaticaccess.co.uk/healthcare/">Healthcare</a></li>
+	<li id="menu-item-2718" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2718"><a href="https://www.automaticaccess.co.uk/automatic-doors-for-hotels/">Hotels</a></li>
+	<li id="menu-item-2708" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2708"><a href="https://www.automaticaccess.co.uk/retail/">Retail</a></li>
+	<li id="menu-item-2714" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2714"><a href="https://www.automaticaccess.co.uk/sports-leisure/">Sports &#038; Leisure</a></li>
+</ul>
+</li>
+<li id="menu-item-2732" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2732"><a href="/blog/case-studies/">Case Studies</a></li>
+<li id="menu-item-2700" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2700"><a href="https://www.automaticaccess.co.uk/contact/">Contact</a></li>
+</ul></div>                            </nav>
+                        </div>			
+
+                        <!-- mobile-menu-start-->
+
+                    <div class="mobile-menu clearfix desktop-none">
+                        <a title="Automatic Access Limited" class="mobile-logo" href="https://www.automaticaccess.co.uk/">
+                            <img src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%200%200'%3E%3C/svg%3E" alt="logo" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/images/logo.jpg"><noscript><img src="https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/images/logo.jpg" alt="logo"></noscript>
+                        </a>
+                        <div class="header-social-icons">
+                            <div class="block-content">			<div class="textwidget"><div class="social-icons">
+<ul>
+<li><a href="https://www.facebook.com/automaticaccess" target="_blank" rel="noopener"><img width="35" height="35" class="alignnone size-full wp-image-150" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2035%2035'%3E%3C/svg%3E" alt="Facebook" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/uploads/2018/08/facebook-icon.png" /><noscript><img width="35" height="35" class="alignnone size-full wp-image-150" src="https://www.automaticaccess.co.uk/wp-content/uploads/2018/08/facebook-icon.png" alt="Facebook" /></noscript></a></li>
+</ul>
+</div>
+</div>
+		</div>                        </div>
+                                                <a class="navigation" href="javascript:void(0);" aria-label="Menu drop down">
+                          <span class="bar"></span>
+                          <span class="bar"></span>
+                          <span class="bar"></span>                          
+                        </a>
+                    </div>
+
+                    <div class="navigation-overlay">
+                        <a class="navigation" href="javascript:void(0);">
+                          <span class="bar"></span>
+                          <span class="bar"></span>
+                          <span class="bar"></span>                          
+                        </a>
+                        <div class="menu-new-main-menu-container"><ul id="primary-menu" class="menu"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2654"><a href="https://www.automaticaccess.co.uk/about-us/">About Us</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3609"><a href="https://www.automaticaccess.co.uk/about-us/">Who are we?</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3074"><a href="https://www.automaticaccess.co.uk/automatic-doors/fire-safety/">Fire Safety</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2658"><a href="https://www.automaticaccess.co.uk/occupier-safety-checks/">Occupier Safety Checks for Automatic Doors</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2662"><a href="https://www.automaticaccess.co.uk/links/">Resources</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2694"><a href="#">Products</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2666"><a href="https://www.automaticaccess.co.uk/automatic-doors/">Automatic Doors</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2678"><a href="https://www.automaticaccess.co.uk/automatic-balanced-doors/">Automatic Balanced Doors</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2680"><a href="https://www.automaticaccess.co.uk/automatic-bi-folding-doors/">Automatic Bi-Folding Doors</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2668"><a href="https://www.automaticaccess.co.uk/automatic-revolving-doors/">Automatic Revolving Doors</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2670"><a href="https://www.automaticaccess.co.uk/automatic-sliding-doors/">Automatic Sliding Doors</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2672"><a href="https://www.automaticaccess.co.uk/automatic-swinging-doors/">Automatic Swing Doors</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2674"><a href="https://www.automaticaccess.co.uk/automatic-telescopic-doors/">Automatic Telescopic Doors</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2676"><a href="https://www.automaticaccess.co.uk/stainless-steel-automatic-doors/">Stainless Steel Finish Automated Entrances</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2698"><a href="https://www.automaticaccess.co.uk/queue-management-system/">Covid-19 Queue Management System</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2880"><a href="https://www.automaticaccess.co.uk/dda-disabled-door-systems/">DDA Disabled Door Systems</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2686"><a href="https://www.automaticaccess.co.uk/automatic-door-openers/">Door Operators</a>
+	<ul class="sub-menu">
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2682"><a href="https://www.automaticaccess.co.uk/automatic-door-activators/">Activators &#038; Safety Devices</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2684"><a href="https://www.automaticaccess.co.uk/automatic-door-actuators/">Actuators</a></li>
+		<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2688"><a href="https://www.automaticaccess.co.uk/pneumatic-door-openers/">Pneumatic Operators</a></li>
+	</ul>
+</li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2690"><a href="https://www.automaticaccess.co.uk/shop-fronts/">Shop Fronts</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3497"><a href="https://www.automaticaccess.co.uk/uninterrupted-power-supply/">Uninterrupted Power Supply</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2696"><a href="https://www.automaticaccess.co.uk/automatic-door-repairs/">Maintenance &#038; Repairs</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3569"><a href="https://www.automaticaccess.co.uk/automatic-doors-home-domestic/">Home &#038; Domestic</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-2710"><a href="https://www.automaticaccess.co.uk/sectors/">Sectors</a>
+<ul class="sub-menu">
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2716"><a href="https://www.automaticaccess.co.uk/automatic-doors-for-care-homes/">Care Homes</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2706"><a href="https://www.automaticaccess.co.uk/commercial-properties/">Commercial Properties</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2712"><a href="https://www.automaticaccess.co.uk/education/">Education</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2704"><a href="https://www.automaticaccess.co.uk/healthcare/">Healthcare</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2718"><a href="https://www.automaticaccess.co.uk/automatic-doors-for-hotels/">Hotels</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2708"><a href="https://www.automaticaccess.co.uk/retail/">Retail</a></li>
+	<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2714"><a href="https://www.automaticaccess.co.uk/sports-leisure/">Sports &#038; Leisure</a></li>
+</ul>
+</li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2732"><a href="/blog/case-studies/">Case Studies</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2700"><a href="https://www.automaticaccess.co.uk/contact/">Contact</a></li>
+</ul></div>
+                        <a class="btn request-btn" href="https://www.automaticaccess.co.uk/request-a-quote/" title="Request a quote">Request a quote</a>
+                        
+                    </div>
+                    <!-- mobile menu-end-->
+
+                        
+                       
+                    </div>
+                </div>
+            </header>
+
+
+            <div id="content" class="site-content">
+	<div id="primary" class="content-area">
+		<main id="main" class="site-main">
+			
+		        <section data-bg="https://www.automaticaccess.co.uk/wp-content/themes/automaticaccess/images/gallery-banner.jpg" class="inner-banner rocket-lazyload" style="">
+            <div class="container">
+                <h1 class="entry-title">The Pointer Sisters: Automatic</h1>            </div>
+        </section>  
+  
+            <div id="post-1022" class="single-post-item post-1022 post type-post status-publish format-standard has-post-thumbnail hentry category-general">
+                <div class="container">
+                    
+                <div class="entry-content">
+                    <p>American R&amp;B group the Pointer Sisters is one of the most enduring family bands in the world &#8211; with a career spanning almost five decades to date. Since forming in 1969, the all-girl group has had a string of top 20 hits in both the US and the UK and shows no sign of slowing down any time soon!<span id="more-1022"></span></p>
+<p>&nbsp;</p>
+<p><strong>Early years</strong></p>
+<p>The group was formed by California-born sisters June and Bonnie Pointer, who began performing in clubs as a duo when they were aged 17 and 19 respectively. They became a trio when they were joined by their sister, 21-year-old Anita, soon after making their debut. Then, in 1972, they became a quartet when their fourth sister, Ruth, aged 26, joined them.</p>
+<p>The girls had grown up in West Oakland listening to gospel music and had been encouraged to sing along by their parents, Rev Elton Pointer and wife Sarah. They were warned that the blues and rock &#8216;n&#8217; roll were &#8220;the devil&#8217;s music&#8221;, but they sang both when their watchful parents weren&#8217;t around!</p>
+<p>&nbsp;</p>
+<p><strong>Rise to fame</strong></p>
+<p>After forming the Pointer Sisters, they played the live circuit (usually as a supporting act) and provided backing vocals for the likes of Grace Slick, Boz Scaggs, Sylvester James and Elvin Bishop. In 1971, while supporting Bishop, they were spotted by a talent scout and signed up to Atlantic Records.</p>
+<p>They went on to release an incredible 51 singles, 16 studio albums, three live albums and 11 compilation albums. They have also won three Grammy Awards, including one for best country vocal performance for Fairytale in 1975 and two in 1985 &#8211; best pop performance for Jump (For My Love) and best vocal arrangement for Automatic, their most famous single.</p>
+<p>&nbsp;</p>
+<p><strong>Automatic&#8217;s global success</strong></p>
+<p>With June having left the band in 1977, the now trio moved to the Planet label and <a href="https://www.youtube.com/watch?v=KNi8aW8Nf6s/" target="_blank" rel="noopener">Automatic</a> was released as a single from their 10th studio album, Break Out.</p>
+<p>It became one of the Pointer Sisters&#8217; signature songs and reached number five in the Billboard Hot 100 charts in the United States. It also charted in the Hot R&amp;B/Hip-Hop chart and the Hot Dance Club Play chart, reaching the number two spot.</p>
+<p>Automatic gave the Pointer Sisters their biggest hit in the UK, spending two weeks at number two in in May 1984. It reached number one in Ireland, number five in Belgium, number nine in the Netherlands, number eight in New Zealand and number 15 in Australia.</p>
+<p>&nbsp;</p>
+<p><strong>Lyrics meaning</strong></p>
+<p>The lyrics of the song refer to being hopelessly besotted with someone, to the point where you find it hard to function when they&#8217;re around and you become a nervous wreck. The lyrics, &#8220;All I can manage to push from my lips is a stream of absurdities,&#8221; describe how you begin to talk gibberish.</p>
+<p>Singing the lead vocal, Ruth Pointer describes how her legs are &#8220;too weak to stand&#8221;, her hands &#8220;shake like a leaf&#8221; and her &#8220;systems are down&#8221;.</p>
+<p>The vocals suggest this is an automatic reaction to being so close to the singer&#8217;s object of desire: &#8220;No way to control it &#8211; it&#8217;s totally automatic whenever you&#8217;re around.&#8221;</p>
+<p>&nbsp;</p>
+<p><strong>Popular culture</strong></p>
+<p>Dance act Ultra Naté released a cover version of Automatic in 2007, which hit the number one spot in the US dance chart on 28th April. The original song featured on the soundtrack of a number of films, including The Return of the Six Million Dollar Man and the Bionic Woman in 1987 and Ricochet in 1991.</p>
+<p>It also appeared on the soundtrack of the cult video racing car game, Grand Theft Auto: Vice City, in 2002. In September 2015, it featured on the soundtrack of the US comedy horror series, Scream Queens. There were also cover versions by Belgian singer Afi in 2006, British rock band Hot Leg in 2008 and Dutch group Mai Tai in 2011.</p>
+<p>Sadly, June Pointer died of cancer at the age of 52 in 2006. The Pointer Sisters&#8217; line-up today features Ruth (now aged 72 and a mother-of-five) and her daughter Issa, aged 40. They have recently been joined by Ruth&#8217;s granddaughter Sadako, aged 34, to complete the line-up as a trio.</p>
+<p>One thing that will always be automatic is our selection of doors! Automatic Access is an independent company with extensive experience in designing and installing automatic doors for a diverse range of public buildings, private businesses and educational establishments.</p>
+<p>If you have any questions, please fill out our <a href="https://www.automaticaccess.co.uk/contact/">enquiry form</a> and we&#8217;ll get back to you as soon as possible.</p>
+                    
+                </div>
+                
+                
+                
+                <!-- .entry-content -->
+                </div>
+               
+            </div>
+       
+
+    <!-- #post-1022 -->
+
+		</main><!-- #main -->
+	</div><!-- #primary -->
+
+<!--Have a quastion-->
+<section class="haveaquestion-section text-center">
+    <h3>Have a question?</h3>
+    <div class="button-group">
+        <a href="https://www.automaticaccess.co.uk/contact/" class="btn btn-light" title="Contact us">Contact us</a>
+        <a href="https://www.automaticaccess.co.uk/request-a-quote/" class="btn btn-outline-primary" title="Request a quote">Request a quote</a>
+    </div>
+</section>
+ </div>
+    <!-- #content -->
+ <footer id="colophon" class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md-4">
+                    <div class="footer-block footer-contact-details">
+                        <div class="block-content"><h4 class="block-title">Contact Us</h4>			<div class="textwidget"><div class="contact-details">
+<ul>
+<li class="phone"><a href="tel:0116 2695050">0116 2695050</a></li>
+<li class="email"><a href="mailto:info@automaticaccess.co.uk">info@automaticaccess.co.uk</a></li>
+</ul>
+</div>
+</div>
+		</div>                    </div>
+                    <div class="footer-block">
+                        <div class="block-content"><h4 class="block-title">Address</h4>			<div class="textwidget"><p>Automatic Access Limited<br />
+2B The Half Croft<br />
+Syston<br />
+Leicestershire<br />
+LE7 1LD</p>
+</div>
+		</div>                    </div>
+                    <div class="footer-block footer-social-icons">
+                        <div class="block-content">			<div class="textwidget"><div class="social-icons">
+<ul>
+<li><a href="https://www.facebook.com/automaticaccess" target="_blank" rel="noopener"><img width="35" height="35" class="alignnone size-full wp-image-150" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2035%2035'%3E%3C/svg%3E" alt="Facebook" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/uploads/2018/08/facebook-icon.png" /><noscript><img width="35" height="35" class="alignnone size-full wp-image-150" src="https://www.automaticaccess.co.uk/wp-content/uploads/2018/08/facebook-icon.png" alt="Facebook" /></noscript></a></li>
+</ul>
+</div>
+</div>
+		</div>                    </div>
+                </div>
+                <div class="col-lg-7 col-md-8 text-right">
+                    <div class="footer-links">
+                        <div class="block-content"><h4 class="block-title">Information</h4><div class="menu-information-links-container"><ul id="menu-information-links" class="menu"><li id="menu-item-1849" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1849"><a href="https://www.automaticaccess.co.uk/blog/case-studies/">Case Studies</a></li>
+<li id="menu-item-3312" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3312"><a href="https://www.automaticaccess.co.uk/careers/">Careers</a></li>
+<li id="menu-item-135" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-135"><a href="https://www.automaticaccess.co.uk/contact/">Contact</a></li>
+</ul></div></div>                    </div>
+
+                    <div class="footer-links">
+                        <div class="block-content"><h4 class="block-title">Our Products</h4><div class="menu-our-products-links-container"><ul id="menu-our-products-links" class="menu"><li id="menu-item-137" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-137"><a href="https://www.automaticaccess.co.uk/automatic-doors/">Automatic Doors</a></li>
+<li id="menu-item-138" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-138"><a href="https://www.automaticaccess.co.uk/shop-fronts/">Shop Fronts</a></li>
+<li id="menu-item-139" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-139"><a href="https://www.automaticaccess.co.uk/automatic-door-openers/">Door Operators</a></li>
+<li id="menu-item-140" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-140"><a href="https://www.automaticaccess.co.uk/automatic-door-repairs/">Maintenance &#038; Repairs</a></li>
+</ul></div></div>                    </div>
+
+                    <div class="footer-links last">
+                        <div class="block-content"><h4 class="block-title">Company</h4><div class="menu-company-links-container"><ul id="menu-company-links" class="menu"><li id="menu-item-141" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-141"><a href="https://www.automaticaccess.co.uk/about-us/">About Us</a></li>
+<li id="menu-item-142" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-142"><a href="https://www.automaticaccess.co.uk/sectors/">Sectors</a></li>
+<li id="menu-item-143" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-143"><a href="https://www.automaticaccess.co.uk/gallery/">Gallery</a></li>
+<li id="menu-item-144" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-144"><a href="https://www.automaticaccess.co.uk/blog/">Blog</a></li>
+</ul></div></div>                    </div>
+                    <div class="block footer-bottom-details">
+                        <div class="block-content">			<div class="textwidget"><div class="footer-brand-icons">
+<ul class="foot-brands">
+<li><img width="179" height="150" class="foot-logos alignnone size-full wp-image-3621" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20179%20150'%3E%3C/svg%3E" alt="" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/safe-contractor-approved-logo.jpg" /><noscript><img width="179" height="150" class="foot-logos alignnone size-full wp-image-3621" src="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/safe-contractor-approved-logo.jpg" alt="" /></noscript></li>
+<li><img width="369" height="150" class="foot-logos alignnone size-full wp-image-3615" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20369%20150'%3E%3C/svg%3E" alt="" data-lazy-srcset="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/adsa-logo.jpg 369w, https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/adsa-logo-300x122.jpg 300w" data-lazy-sizes="(max-width: 369px) 100vw, 369px" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/adsa-logo.jpg" /><noscript><img width="369" height="150" class="foot-logos alignnone size-full wp-image-3615" src="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/adsa-logo.jpg" alt="" srcset="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/adsa-logo.jpg 369w, https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/adsa-logo-300x122.jpg 300w" sizes="(max-width: 369px) 100vw, 369px" /></noscript></li>
+<li><img width="369" height="150" class="foot-logos alignnone size-full wp-image-3617" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20369%20150'%3E%3C/svg%3E" alt="" data-lazy-srcset="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/record-diamond-partner-logo.jpg 369w, https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/record-diamond-partner-logo-300x122.jpg 300w" data-lazy-sizes="(max-width: 369px) 100vw, 369px" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/record-diamond-partner-logo.jpg" /><noscript><img width="369" height="150" class="foot-logos alignnone size-full wp-image-3617" src="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/record-diamond-partner-logo.jpg" alt="" srcset="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/record-diamond-partner-logo.jpg 369w, https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/record-diamond-partner-logo-300x122.jpg 300w" sizes="(max-width: 369px) 100vw, 369px" /></noscript></li>
+<li><img width="247" height="150" class="foot-logos alignnone size-full wp-image-3619" src="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20247%20150'%3E%3C/svg%3E" alt="" data-lazy-src="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/chas-logo.jpg" /><noscript><img width="247" height="150" class="foot-logos alignnone size-full wp-image-3619" src="https://www.automaticaccess.co.uk/wp-content/uploads/2023/07/chas-logo.jpg" alt="" /></noscript></li>
+</ul>
+</div>
+<p>Company Reg: 05211505 | VAT ID: GB 846 878 659 | <a href="https://www.automaticaccess.co.uk/privacy-cookies-policy/">Privacy &amp; Cookies Policy</a></p>
+</div>
+		</div>                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <section class="copyright-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="site-info">&copy; 2023 <strong>Automatic Access Limited.</strong> All Rights Reserved.</div>
+                </div>
+                <div class="col-md-6 text-right">Powered by <a href="https://www.page1.co.uk/" target="_blank" rel="noopener">Page1</a></div>
+            </div>
+        </div>
+    </section>
+    </div>
+ <!--googleoff: all--><div id="cookie-law-info-bar" data-nosnippet="true"><span><div class="cli-bar-container cli-style-v2"><div class="cli-bar-message">We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept”, you consent to the use of ALL the cookies.</div><div class="cli-bar-btn_container"><a href="https://www.automaticaccess.co.uk/privacy-cookies-policy/" id="CONSTANT_OPEN_URL" class="cli-plugin-main-link">Privacy Policy</a>  <a role='button' data-cli_action="accept" id="cookie_action_close_header" class="medium cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button wt-cli-accept-btn">ACCEPT</a></div></div></span></div><div id="cookie-law-info-again" data-nosnippet="true"><span id="cookie_hdr_showagain">Manage consent</span></div><div class="cli-modal" data-nosnippet="true" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+	<div class="cli-modal-content cli-bar-popup">
+		  <button type="button" class="cli-modal-close" id="cliModalClose">
+			<svg class="" viewbox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+			<span class="wt-cli-sr-only">Close</span>
+		  </button>
+		  <div class="cli-modal-body">
+			<div class="cli-container-fluid cli-tab-container">
+	<div class="cli-row">
+		<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+			<div class="cli-privacy-overview">
+				<h4>Privacy Overview</h4>				<div class="cli-privacy-content">
+					<div class="cli-privacy-content-text">This website uses cookies to improve your experience while you navigate through the website. Out of these, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. These cookies will be stored in your browser only with your consent. You also have the option to opt-out of these cookies. But opting out of some of these cookies may affect your browsing experience.</div>
+				</div>
+				<a class="cli-privacy-readmore" aria-label="Show more" role="button" data-readmore-text="Show more" data-readless-text="Show less"></a>			</div>
+		</div>
+		<div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+												<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab">
+								Necessary							</a>
+															<div class="wt-cli-necessary-checkbox">
+									<input type="checkbox" class="cli-user-preference-checkbox"  id="wt-cli-checkbox-necessary" data-id="checkbox-necessary" checked="checked"  />
+									<label class="form-check-label" for="wt-cli-checkbox-necessary">Necessary</label>
+								</div>
+								<span class="cli-necessary-caption">Always Enabled</span>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="necessary">
+								<div class="wt-cli-cookie-description">
+									Necessary cookies are absolutely essential for the website to function properly. These cookies ensure basic functionalities and security features of the website, anonymously.
+<table class="cookielawinfo-row-cat-table cookielawinfo-winter"><thead><tr><th class="cookielawinfo-column-1">Cookie</th><th class="cookielawinfo-column-3">Duration</th><th class="cookielawinfo-column-4">Description</th></tr></thead><tbody><tr class="cookielawinfo-row"><td class="cookielawinfo-column-1">cookielawinfo-checbox-analytics</td><td class="cookielawinfo-column-3">11 months</td><td class="cookielawinfo-column-4">This cookie is set by GDPR Cookie Consent plugin. The cookie is used to store the user consent for the cookies in the category "Analytics".</td></tr><tr class="cookielawinfo-row"><td class="cookielawinfo-column-1">cookielawinfo-checbox-functional</td><td class="cookielawinfo-column-3">11 months</td><td class="cookielawinfo-column-4">The cookie is set by GDPR cookie consent to record the user consent for the cookies in the category "Functional".</td></tr><tr class="cookielawinfo-row"><td class="cookielawinfo-column-1">cookielawinfo-checbox-others</td><td class="cookielawinfo-column-3">11 months</td><td class="cookielawinfo-column-4">This cookie is set by GDPR Cookie Consent plugin. The cookie is used to store the user consent for the cookies in the category "Other.</td></tr><tr class="cookielawinfo-row"><td class="cookielawinfo-column-1">cookielawinfo-checkbox-necessary</td><td class="cookielawinfo-column-3">11 months</td><td class="cookielawinfo-column-4">This cookie is set by GDPR Cookie Consent plugin. The cookies is used to store the user consent for the cookies in the category "Necessary".</td></tr><tr class="cookielawinfo-row"><td class="cookielawinfo-column-1">cookielawinfo-checkbox-performance</td><td class="cookielawinfo-column-3">11 months</td><td class="cookielawinfo-column-4">This cookie is set by GDPR Cookie Consent plugin. The cookie is used to store the user consent for the cookies in the category "Performance".</td></tr><tr class="cookielawinfo-row"><td class="cookielawinfo-column-1">viewed_cookie_policy</td><td class="cookielawinfo-column-3">11 months</td><td class="cookielawinfo-column-4">The cookie is set by the GDPR Cookie Consent plugin and is used to store whether or not user has consented to the use of cookies. It does not store any personal data.</td></tr></tbody></table>								</div>
+							</div>
+						</div>
+					</div>
+																	<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="functional" data-toggle="cli-toggle-tab">
+								Functional							</a>
+															<div class="cli-switch">
+									<input type="checkbox" id="wt-cli-checkbox-functional" class="cli-user-preference-checkbox"  data-id="checkbox-functional" />
+									<label for="wt-cli-checkbox-functional" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Functional</span></label>
+								</div>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="functional">
+								<div class="wt-cli-cookie-description">
+									Functional cookies help to perform certain functionalities like sharing the content of the website on social media platforms, collect feedbacks, and other third-party features.
+								</div>
+							</div>
+						</div>
+					</div>
+																	<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="performance" data-toggle="cli-toggle-tab">
+								Performance							</a>
+															<div class="cli-switch">
+									<input type="checkbox" id="wt-cli-checkbox-performance" class="cli-user-preference-checkbox"  data-id="checkbox-performance" />
+									<label for="wt-cli-checkbox-performance" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Performance</span></label>
+								</div>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="performance">
+								<div class="wt-cli-cookie-description">
+									Performance cookies are used to understand and analyze the key performance indexes of the website which helps in delivering a better user experience for the visitors.
+								</div>
+							</div>
+						</div>
+					</div>
+																	<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="analytics" data-toggle="cli-toggle-tab">
+								Analytics							</a>
+															<div class="cli-switch">
+									<input type="checkbox" id="wt-cli-checkbox-analytics" class="cli-user-preference-checkbox"  data-id="checkbox-analytics" />
+									<label for="wt-cli-checkbox-analytics" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Analytics</span></label>
+								</div>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="analytics">
+								<div class="wt-cli-cookie-description">
+									Analytical cookies are used to understand how visitors interact with the website. These cookies help provide information on metrics the number of visitors, bounce rate, traffic source, etc.
+								</div>
+							</div>
+						</div>
+					</div>
+																	<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="advertisement" data-toggle="cli-toggle-tab">
+								Advertisement							</a>
+															<div class="cli-switch">
+									<input type="checkbox" id="wt-cli-checkbox-advertisement" class="cli-user-preference-checkbox"  data-id="checkbox-advertisement" />
+									<label for="wt-cli-checkbox-advertisement" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Advertisement</span></label>
+								</div>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="advertisement">
+								<div class="wt-cli-cookie-description">
+									Advertisement cookies are used to provide visitors with relevant ads and marketing campaigns. These cookies track visitors across websites and collect information to provide customized ads.
+								</div>
+							</div>
+						</div>
+					</div>
+																	<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="others" data-toggle="cli-toggle-tab">
+								Others							</a>
+															<div class="cli-switch">
+									<input type="checkbox" id="wt-cli-checkbox-others" class="cli-user-preference-checkbox"  data-id="checkbox-others" />
+									<label for="wt-cli-checkbox-others" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Others</span></label>
+								</div>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="others">
+								<div class="wt-cli-cookie-description">
+									Other uncategorized cookies are those that are being analyzed and have not been classified into a category as yet.
+								</div>
+							</div>
+						</div>
+					</div>
+										</div>
+	</div>
+</div>
+		  </div>
+		  <div class="cli-modal-footer">
+			<div class="wt-cli-element cli-container-fluid cli-tab-container">
+				<div class="cli-row">
+					<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+						<div class="cli-tab-footer wt-cli-privacy-overview-actions">
+						
+															<a id="wt-cli-privacy-save-btn" role="button" tabindex="0" data-cli-action="accept" class="wt-cli-privacy-btn cli_setting_save_button wt-cli-privacy-accept-btn cli-btn">SAVE &amp; ACCEPT</a>
+													</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<!--googleon: all-->		<style type="text/css">
+							.pgntn-page-pagination {
+					text-align: center !important;
+				}
+				.pgntn-page-pagination-block {
+					width: 100% !important;
+					padding: 0 0 0 0;
+												margin: 0 auto;
+					<? } elseif ( 'right' == $pgntn_options['align'] ) { ?>
+							float: right;
+									}
+				.pgntn-page-pagination a {
+					color: #ffffff !important;
+					background-color: #353535 !important;
+					text-decoration: none !important;
+					border: none !important;
+									}
+				.pgntn-page-pagination a:hover {
+					color: #ffffff !important;
+				}
+				.pgntn-page-pagination-intro,
+				.pgntn-page-pagination .current {
+					background-color: #efefef !important;
+					color: #353535 !important;
+					border: none !important;
+									}
+			.archive #nav-above,
+					.archive #nav-below,
+					.search #nav-above,
+					.search #nav-below,
+					.blog #nav-below,
+					.blog #nav-above,
+					.navigation.paging-navigation,
+					.navigation.pagination,
+					.pagination.paging-pagination,
+					.pagination.pagination,
+					.pagination.loop-pagination,
+					.bicubic-nav-link,
+					#page-nav,
+					.camp-paging,
+					#reposter_nav-pages,
+					.unity-post-pagination,
+					.wordpost_content .nav_post_link,.page-link,
+					.post-nav-links,
+					.page-links,#comments .navigation,
+					#comment-nav-above,
+					#comment-nav-below,
+					#nav-single,
+					.navigation.comment-navigation,
+					comment-pagination {
+						display: none !important;
+					}
+					.single-gallery .pagination.gllrpr_pagination {
+						display: block !important;
+					}		</style>
+	
+            <div class="progress-wrap btn-right-side">
+				                    <svg class="progress-circle" width="100%" height="100%" viewbox="-1 -1 102 102">
+                        <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"/>
+                    </svg>
+				            </div>
+
+			
+            <script type="rocketlazyloadscript" data-rocket-type="text/javascript">
+                var offset = 200;
+                var duration = 500;
+
+                jQuery(window).on('load', function () {
+                	jQuery(window).on('scroll', function () {
+	                    if (jQuery(this).scrollTop() > offset) {
+	                        jQuery('.progress-wrap').addClass('active-progress');
+	                    } else {
+	                        jQuery('.progress-wrap').removeClass('active-progress');
+	                    }
+	                });
+
+	                jQuery('.progress-wrap').on('click', function (e) {
+	                    e.preventDefault();
+	                    jQuery('html, body').animate({scrollTop: 0}, duration);
+	                    return false;
+	                })
+                })
+            </script>
+
+			<script src="data:text/javascript;base64,dmFyIGtwZGV0ZWN0ZGVsYXlqcyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoJ3NjcmlwdFt0eXBlPSJyb2NrZXRsYXp5bG9hZHNjcmlwdCJdJykubGVuZ3RoO2lmIChrcGRldGVjdGRlbGF5anMgPj0gMSl7Y2xhc3Mga3Bzb0V4ZWN1dGVTY3JpcHRzIGV4dGVuZHMgUm9ja2V0TGF6eUxvYWRTY3JpcHRze3N0YXRpYyBrcHNvRmlyZSgpe2lmKG5hdmlnYXRvci51c2VyQWdlbnQubWF0Y2goL21ldHJpeHxsaWdodHxwaW5nfGRhcmV8cHRzdC9pKSl7dmFyIGU9bmV3IFJvY2tldExhenlMb2FkU2NyaXB0cyhbImtleWRvd24iLCJtb3VzZW92ZXIiLCJ0b3VjaG1vdmUiLCJ0b3VjaHN0YXJ0IiwidG91Y2hlbmQiLCJ0b3VjaGNhbmNlbCIsInRvdWNoZm9yY2VjaGFuZ2UiLCJ3aGVlbCJdKTt9ZWxzZXt2YXIgZT1uZXcgUm9ja2V0TGF6eUxvYWRTY3JpcHRzKFsibG9hZCJdKTt9ZS5fYWRkVXNlckludGVyYWN0aW9uTGlzdGVuZXIoZSk7fX1rcHNvRXhlY3V0ZVNjcmlwdHMua3Bzb0ZpcmUoKTt9" id="mLQFAVgBhg"></script>
+	
+
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/contact-form-7/includes/swv/js/index.js' id='swv-js'></script>
+<script type='text/javascript' id='contact-form-7-js-extra'>
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/www.automaticaccess.co.uk\/wp-json\/","namespace":"contact-form-7\/v1"},"cached":"1"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/contact-form-7/includes/js/index.js' id='contact-form-7-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/ui/core.min.js' id='jquery-ui-core-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/ui/datepicker.min.js' id='jquery-ui-datepicker-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='jquery-ui-datepicker-js-after'>
+jQuery(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Close","currentText":"Today","monthNames":["January","February","March","April","May","June","July","August","September","October","November","December"],"monthNamesShort":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],"nextText":"Next","prevText":"Previous","dayNames":["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"dayNamesShort":["Sun","Mon","Tue","Wed","Thu","Fri","Sat"],"dayNamesMin":["S","M","T","W","T","F","S"],"dateFormat":"MM d, yy","firstDay":1,"isRTL":false});});
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/i18n/datepicker-en-GB.min.js' id='jquery-ui-en-GB-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/contact-form-7-datepicker/js/jquery-ui-timepicker/jquery-ui-timepicker-addon.min.js' id='jquery-ui-timepicker-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/contact-form-7-datepicker/js/jquery-ui-timepicker/i18n/jquery-ui-timepicker-en-GB.js' id='jquery-ui-timepicker-en-GB-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/ui/mouse.min.js' id='jquery-ui-mouse-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/ui/slider.min.js' id='jquery-ui-slider-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/ui/controlgroup.min.js' id='jquery-ui-controlgroup-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/ui/checkboxradio.min.js' id='jquery-ui-checkboxradio-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/jquery/ui/button.min.js' id='jquery-ui-button-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/contact-form-7-datepicker/js/jquery-ui-sliderAccess.js' id='jquery-ui-slider-access-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/smooth-back-to-top-button/assets/js/smooth-back-to-top-button.js' id='sbttb-script-js'></script>
+<script type='text/javascript' id='wpcf7-redirect-script-js-extra'>
+/* <![CDATA[ */
+var wpcf7r = {"ajax_url":"https:\/\/www.automaticaccess.co.uk\/wp-admin\/admin-ajax.php"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/wpcf7-redirect/build/js/wpcf7r-fe.js' id='wpcf7-redirect-script-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script type='text/javascript' id='rocket-preload-links-js-extra'>
+/* <![CDATA[ */
+var RocketPreloadLinksConfig = {"excludeUris":"\/(?:.+\/)?feed(?:\/(?:.+\/?)?)?$|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/refer\/|\/go\/|\/recommend\/|\/recommends\/","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|pdf|doc|docx|xls|xlsx|php|html|htm","siteUrl":"https:\/\/www.automaticaccess.co.uk","onHoverDelay":"100","rateThrottle":"3"};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/comment-reply.min.js' id='comment-reply-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.google.com/recaptcha/api.js?render=6LfLfMYlAAAAAAsMGNnlgZv3B5t-oksr6xz_FtFK' id='google-recaptcha-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/dist/vendor/regenerator-runtime.min.js' id='regenerator-runtime-js'></script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-includes/js/dist/vendor/wp-polyfill.min.js' id='wp-polyfill-js'></script>
+<script type='text/javascript' id='wpcf7-recaptcha-js-extra'>
+/* <![CDATA[ */
+var wpcf7_recaptcha = {"sitekey":"6LfLfMYlAAAAAAsMGNnlgZv3B5t-oksr6xz_FtFK","actions":{"homepage":"homepage","contactform":"contactform"}};
+/* ]]> */
+</script>
+<script type="rocketlazyloadscript" data-rocket-type='text/javascript' src='https://www.automaticaccess.co.uk/wp-content/plugins/contact-form-7/modules/recaptcha/index.js' id='wpcf7-recaptcha-js'></script>
+<script id="cz8MjVA6ko" async src="data:text/javascript;base64,aWYobmF2aWdhdG9yLnVzZXJBZ2VudC5tYXRjaCgvbWV0cml4fGxpZ2h0fHBpbmd8ZGFyZXxwdHN0L2kpKXt2YXIga3BVc2VySW50ZXJhY3Rpb25FdmVudHM9WyJrZXlkb3duIiwibW91c2VvdmVyIiwidG91Y2htb3ZlIiwidG91Y2hzdGFydCIsInRvdWNoZW5kIiwidG91Y2hjYW5jZWwiLCJ0b3VjaGZvcmNlY2hhbmdlIiwid2hlZWwiXTt9ZWxzZXt2YXIga3BVc2VySW50ZXJhY3Rpb25FdmVudHM9WyJsb2FkIl07fWtwVXNlckludGVyYWN0aW9uRXZlbnRzLmZvckVhY2goZnVuY3Rpb24oZXZlbnQpe3dpbmRvdy5hZGRFdmVudExpc3RlbmVyKGV2ZW50LGtwVHJpZ2dlclNjcmlwdExvYWRlcix7cGFzc2l2ZTp0cnVlfSl9KTtmdW5jdGlvbiBrcFRyaWdnZXJTY3JpcHRMb2FkZXIoKXtod3RMSExvY1JGNmt1M08oKTtrcFVzZXJJbnRlcmFjdGlvbkV2ZW50cy5mb3JFYWNoKGZ1bmN0aW9uKGV2ZW50KXt3aW5kb3cucmVtb3ZlRXZlbnRMaXN0ZW5lcihldmVudCxrcFRyaWdnZXJTY3JpcHRMb2FkZXIse3Bhc3NpdmU6dHJ1ZX0pfSk7fWZ1bmN0aW9uIGh3dExITG9jUkY2a3UzTygpe2RvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoImxpbmtbZGF0YS10eXBlPSdrcHBhc3NpdmUnXSIpLmZvckVhY2goZnVuY3Rpb24oZWxlbSl7ZWxlbS5zZXRBdHRyaWJ1dGUoImhyZWYiLGVsZW0uZ2V0QXR0cmlidXRlKCJkYXRhLWtwbGlua2hyZWYiKSl9KTtzZXRUaW1lb3V0KGZ1bmN0aW9uKCl7ZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgic2NyaXB0W2RhdGEtdHlwZT0na3BwYXNzaXZlJ10iKS5mb3JFYWNoKGZ1bmN0aW9uKGVsZW0pe2VsZW0uc2V0QXR0cmlidXRlKCJzcmMiLGVsZW0uZ2V0QXR0cmlidXRlKCJkYXRhLWtwc2NyaXB0c3JjIikpfSk7fSwyMDApO2lmKGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoInZpZGVvW2RhdGEtdHlwZT0na3BwYXNzaXZlJ10iKSl7aWYoZG9jdW1lbnQucXVlcnlTZWxlY3RvcigidmlkZW9bZGF0YS1rcHZpZGVvc3JjXSIpKXtkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCJ2aWRlb1tkYXRhLWtwdmlkZW9zcmNdIikuZm9yRWFjaChmdW5jdGlvbihlbGVtKXtlbGVtLnNldEF0dHJpYnV0ZSgic3JjIixlbGVtLmdldEF0dHJpYnV0ZSgiZGF0YS1rcHZpZGVvc3JjIikpfSk7fWlmKGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoInZpZGVvW2RhdGEtdHlwZT0na3BwYXNzaXZlJ10gc291cmNlIikpe2RvY3VtZW50LnF1ZXJ5U2VsZWN0b3JBbGwoInZpZGVvW2RhdGEtdHlwZT0na3BwYXNzaXZlJ106bm90KFtkYXRhLWtwdmlkZW9zcmNdKSIpLmZvckVhY2goZnVuY3Rpb24oZWxlbSl7ZWxlbS5zZXRBdHRyaWJ1dGUoInNyYyIsZWxlbS5nZXRFbGVtZW50c0J5VGFnTmFtZSgnc291cmNlJylbMF0uZ2V0QXR0cmlidXRlKCJkYXRhLWtwdmlkZW9zcmMiKSl9KTt9fX0="></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" id="slb_context">/* <![CDATA[ */if ( !!window.jQuery ) {(function($){$(document).ready(function(){if ( !!window.SLB ) { {$.extend(SLB, {"context":["public","user_guest"]});} }})})(jQuery);}/* ]]> */</script>
+<script>window.lazyLoadOptions=[{elements_selector:"img[data-lazy-src],.rocket-lazyload,iframe[data-lazy-src]",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,callback_loaded:function(element){if(element.tagName==="IFRAME"&&element.dataset.rocketLazyload=="fitvidscompatible"){if(element.classList.contains("lazyloaded")){if(typeof window.jQuery!="undefined"){if(jQuery.fn.fitVids){jQuery(element).parent().fitVids()}}}}}},{elements_selector:".rocket-lazyload",data_src:"lazy-src",data_srcset:"lazy-srcset",data_sizes:"lazy-sizes",class_loading:"lazyloading",class_loaded:"lazyloaded",threshold:300,}];window.addEventListener('LazyLoad::Initialized',function(e){var lazyLoadInstance=e.detail.instance;if(window.MutationObserver){var observer=new MutationObserver(function(mutations){var image_count=0;var iframe_count=0;var rocketlazy_count=0;mutations.forEach(function(mutation){for(var i=0;i<mutation.addedNodes.length;i++){if(typeof mutation.addedNodes[i].getElementsByTagName!=='function'){continue}
+if(typeof mutation.addedNodes[i].getElementsByClassName!=='function'){continue}
+images=mutation.addedNodes[i].getElementsByTagName('img');is_image=mutation.addedNodes[i].tagName=="IMG";iframes=mutation.addedNodes[i].getElementsByTagName('iframe');is_iframe=mutation.addedNodes[i].tagName=="IFRAME";rocket_lazy=mutation.addedNodes[i].getElementsByClassName('rocket-lazyload');image_count+=images.length;iframe_count+=iframes.length;rocketlazy_count+=rocket_lazy.length;if(is_image){image_count+=1}
+if(is_iframe){iframe_count+=1}}});if(image_count>0||iframe_count>0||rocketlazy_count>0){lazyLoadInstance.update()}});var b=document.getElementsByTagName("body")[0];var config={childList:!0,subtree:!0};observer.observe(b,config)}},!1)</script><script data-no-minify="1" async data-type="kppassive" data-kpscriptsrc="https://www.automaticaccess.co.uk/wp-content/plugins/wp-rocket/assets/js/lazyload/17.5/lazyload.min.js"></script> </body>
+ </html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1690586395 -->
